@@ -13,20 +13,24 @@ class HomePage extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Text('Logout'),
-              onTap: () => {
-                BlocProvider.of<AuthenticationBloc>(context)
-                    .add(AuthenticationLoggedOut())
-              },
-            ),
-            ListTile(
-              title: Text('data'),
+              title: Text('Couter Page'),
+              leading: Icon(Icons.exposure),
+              trailing: Icon(Icons.keyboard_arrow_right),
               onTap: () => {
                 Navigator.push(context, MaterialPageRoute(builder: (_) {
                   return CounterPage();
                 }))
               },
-            )
+            ),
+            ListTile(
+              title: Text('Logout'),
+              leading: Icon(Icons.exit_to_app),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () => {
+                BlocProvider.of<AuthenticationBloc>(context)
+                    .add(AuthenticationLoggedOut())
+              },
+            ),
           ],
         ),
       ),

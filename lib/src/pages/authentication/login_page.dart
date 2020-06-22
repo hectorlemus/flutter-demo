@@ -19,6 +19,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Login'),
+        centerTitle: true,
       ),
       body: BlocProvider(
         create: (context) {
@@ -27,7 +28,10 @@ class LoginPage extends StatelessWidget {
             userRepository: userRepository,
           );
         },
-        child: LoginForm(),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: LoginForm(),
+        ),
       ),
     );
   }

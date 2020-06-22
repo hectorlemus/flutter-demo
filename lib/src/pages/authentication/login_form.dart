@@ -47,11 +47,13 @@ class _LoginFormState extends State<LoginForm> {
                   controller: _passwordController,
                   obscureText: true,
                 ),
+                SizedBox(height: 20),
                 RaisedButton(
                   onPressed:
                       state is! LoginInProgress ? _onLoginButtonPressed : null,
                   child: Text('Login'),
                 ),
+                SizedBox(height: 20),
                 Container(
                   child: state is LoginInProgress
                       ? CircularProgressIndicator()
