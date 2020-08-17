@@ -9,31 +9,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              title: Text('Couter Page'),
-              leading: Icon(Icons.exposure),
-              trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () => {
-                Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return CounterPage();
-                }))
-              },
-            ),
-            ListTile(
-              title: Text('Logout'),
-              leading: Icon(Icons.exit_to_app),
-              trailing: Icon(Icons.keyboard_arrow_right),
-              onTap: () => {
-                BlocProvider.of<AuthenticationBloc>(context)
-                    .add(AuthenticationLoggedOut())
-              },
-            ),
-          ],
-        ),
-      ),
+      drawer: _drawer(context),
       appBar: AppBar(
         title: Text('Home'),
       ),
@@ -42,6 +18,49 @@ class HomePage extends StatelessWidget {
           child: Text('Home'),
         ),
       ),
+    );
+  }
+
+  Widget _drawer(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          _drawerOption(
+            text: 'Couter Page',
+            icon: Icons.exposure,
+            onTap: () => _goToCounterPage(context),
+          ),
+          _drawerOption(
+            text: 'Logout',
+            icon: Icons.exit_to_app,
+            onTap: () => _onLogOut(context),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _drawerOption({
+    @required String text,
+    @required IconData icon,
+    @required Function onTap,
+  }) {
+    return ListTile(
+      title: Text('$text'),
+      leading: Icon(icon, color: Colors.blue),
+      onTap: onTap,
+    );
+  }
+
+  void _goToCounterPage(BuildContext context) {
+    Navigator.push(context, MaterialPageRoute(builder: (_) {
+      return CounterPage();
+    }));
+  }
+
+  void _onLogOut(BuildContext context) {
+    BlocProvider.of<AuthenticationBloc>(context).add(
+      AuthenticationLoggedOut(),
     );
   }
 }
