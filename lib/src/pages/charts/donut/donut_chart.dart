@@ -16,7 +16,7 @@ class DonutChart extends StatelessWidget {
 
     return new charts.PieChart(
       seriesList,
-      animate: false,
+      animate: true,
       // Configure the width of the pie slices to 60px. The remaining space in
       // the chart will be left as a hole in the center.
       //

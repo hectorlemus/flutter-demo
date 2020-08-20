@@ -19,7 +19,7 @@ class LineChart extends StatelessWidget {
 
     return new charts.LineChart(
       seriesList,
-      animate: false,
+      animate: true,
       defaultRenderer: new charts.LineRendererConfig(includePoints: true),
     );
   }
