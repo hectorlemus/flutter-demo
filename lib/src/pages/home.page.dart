@@ -6,7 +6,12 @@ import 'package:flutter_demo/src/pages/charts/charts_page.dart';
 
 import './counter_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,12 +41,16 @@ class HomePage extends StatelessWidget {
         _option(
           text: 'Couter Page',
           icon: Icons.exposure,
-          onTap: () => _goToCounterPage(context),
+          onTap: () => _navigate(
+            CounterPage(),
+          ),
         ),
         _option(
           text: 'Charts Page',
           icon: Icons.show_chart,
-          onTap: () => _goToChatsPage(context),
+          onTap: () => _navigate(
+            ChartsPage(),
+          ),
         ),
       ],
     );
@@ -65,24 +74,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _goToChatsPage(BuildContext context) {
-    _navigate(
-      context: context,
-      page: ChartsPage(),
-    );
-  }
-
-  void _goToCounterPage(BuildContext context) {
-    _navigate(
-      context: context,
-      page: CounterPage(),
-    );
-  }
-
-  void _navigate({
-    @required BuildContext context,
-    @required StatefulWidget page,
-  }) {
+  void _navigate(StatefulWidget page) {
     Navigator.push(context, MaterialPageRoute(builder: (_) {
       return page;
     }));
