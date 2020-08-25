@@ -21,15 +21,13 @@ class FilesPage extends StatelessWidget {
       padding: EdgeInsets.all(10.0),
       child: ListView(
         children: [
-          _writeFile(),
+          _createTXTFile(),
         ],
       ),
     );
   }
 
-  Widget _writeFile() {
-    return CreateTXTFile(
-      scaffoldKey: _scaffoldKey,
-    );
+  Widget _createTXTFile() {
+    return CreateTXTFile(scaffoldKey: _scaffoldKey);
   }
 }
