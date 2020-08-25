@@ -5,6 +5,7 @@ import 'package:flutter_demo/src/bloc/authentication/authentication_bloc.dart';
 import 'package:flutter_demo/src/pages/charts/charts_page.dart';
 
 import './counter_page.dart';
+import 'files/files.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -52,6 +53,13 @@ class _HomePageState extends State<HomePage> {
             ChartsPage(),
           ),
         ),
+        _option(
+          text: 'Files',
+          icon: Icons.insert_drive_file,
+          onTap: () => _navigate(
+            FilesPage(),
+          ),
+        )
       ],
     );
   }
@@ -74,7 +82,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _navigate(StatefulWidget page) {
+  void _navigate(Widget page) {
     Navigator.push(context, MaterialPageRoute(builder: (_) {
       return page;
     }));
